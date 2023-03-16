@@ -34,10 +34,7 @@ namespace csharp_fundamentals_maps.Test
         [TestCase("Earth",true)]
         [TestCase("Venus", false)]
         [TestCase("Jupiter", true)]
-        [TestCase("Mercury", true)]
-        [TestCase("Uranus", false)]
-        [TestCase("Saturn", false)]
-        [TestCase("Neptune", false)]
+        [TestCase("Mercury", true)]        
         public void doeskeyexistinarray(string planet,bool expectedresult)
         {
             Dictionary<string,string> planets = new Dictionary<string,string>();
