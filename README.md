@@ -6,8 +6,8 @@
 
 ## Set up instructions
 - Fork this repository and clone the forked version to your machine
-- Open the root directory of the project in IntelliJ
-- Implement the requirements listed in comments in the `Core.cs` file
+- Open the sln file in Visual Studio
+- Implement the requirements listed in comments in the `Core.cs` file.  You should be able to see them in the View-Task List
 - When ready to test your solution, open the 'Test Explorer' file and click "Run". 
 
 ## Test Output

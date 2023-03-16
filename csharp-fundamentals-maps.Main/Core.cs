@@ -9,21 +9,18 @@ namespace csharp_fundamentals_maps_exemplar.Main
     public class Core
     {
         /*
-    The final fundamental building block of C# is a Map. There is still much to learn about the language,
+    The final fundamental building block of C# is a Dictionary. There is still much to learn about the language,
     but this component will allow you to start building lots of more complex pieces of software.
-    A map is like a list, except we have control over what we use for an item's index. This allows us to use
-    types other than an incrementing integer to describe the positions of the data contained in the structure.
-    Like Lists, Maps have a variety of different implementations. We'll focus on the HashMap in this exercise.
-    We create a HashMap like this:
-    HashMap<K, V>
+    
+    Dictionary<K, V>
     K is where you'd put the data type of the key for an item, V is the data type of the value.
     If we wanted to map a persons details (their first name, last name, occupation etc.), we could use
-    a HashMap using a String key and a String value like so:
-    HashMap<String, String>
+    a Dictionary using a String key and a String value like so:
+    Dictionary<string, string>
  */
 
+        //TODO: Spend some time understanding the method below
         /*
-            Spend some time understanding the method below
             - It creates a Map of String, String key value pairs
             - It adds some keys with values
             - Under the hood, the Dictionary would look like this: { "firstName": "Nathan", "lastName": King, etc. }
@@ -41,8 +38,8 @@ namespace csharp_fundamentals_maps_exemplar.Main
             return map;
         }
 
+        //TODO: 1. Create a method named getValue that accepts one parameter:
         /*
-            1. Create a method named getValue that accepts one parameter:
             - a string key
             The method must return the value associated to the provided key from the HashMap created
             in the createPerson method
@@ -56,7 +53,7 @@ namespace csharp_fundamentals_maps_exemplar.Main
             
         }
 
-          //TODO:  2. Create a method named hasKey that accepts two parameters:
+        //TODO:  2. Create a method named hasKey that accepts two parameters:
         /*
             - A Dictionary of string, string key value pairs            
             - string
@@ -69,8 +66,8 @@ namespace csharp_fundamentals_maps_exemplar.Main
          }
 
 
+        //TODO: 3. Create a method named getValueOrDefault that accepts two parameters:
         /*
-            3. Create a method named getValueOrDefault that accepts two parameters:
             - A Dictionary<string,integer>
             - A string
             The method must use the string provided to return the integer contained in the provided HashMap,
@@ -83,8 +80,8 @@ namespace csharp_fundamentals_maps_exemplar.Main
         }
 
 
+        //TODO: 4. Complete the method below
         /*
-            4. Complete the method below
             Example input & output:
             input                       output
             [42, 6712, 7]           |   ArrayList<String> ["universe", "bass", "muse"]
