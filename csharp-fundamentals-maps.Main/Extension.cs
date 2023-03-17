@@ -29,16 +29,20 @@ namespace csharp_fundamentals_maps.Main
         
         public Dictionary<string,int> LettersInName()
         {
-            throw new NotImplementedException();
-           // Dictionary<string, int> result = new Dictionary<string, int>();
+           //throw new NotImplementedException();
+            Dictionary<string, int> result = new Dictionary<string, int>();
             
             //TODO 2.  Complete this method to return an Dictionary of <string,int> which contains 
             //          the planet name and the number of letters in its name
             //          iterate the _planets using a foreach object to load the result dictionary.
 
 
+            foreach(KeyValuePair<string,float> pair in _planets)
+            {
+                result.Add(pair.Key, pair.Key.Length);
+            }
 
-            //return result;
+            return result;
         }
 
 
