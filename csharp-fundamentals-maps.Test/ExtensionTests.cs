@@ -25,7 +25,15 @@ namespace csharp_fundamentals_maps.Test
             
             Assert.IsFalse(ext.Planets.ContainsKey("Pluto"));
         }
-
+        
+        [Test]
+        public void LettersInName()
+        {
+            foreach(KeyValuePair<string,int> item in ext.LettersInName())
+            {
+                Assert.IsTrue(item.Key.Length == item.Value);
+            }
+        }
 
         [Test]
         [TestCase("Mercury", 0)]
