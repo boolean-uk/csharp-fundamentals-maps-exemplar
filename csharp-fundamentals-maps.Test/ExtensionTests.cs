@@ -22,38 +22,48 @@ namespace csharp_fundamentals_maps.Test
         [Test]
         public void PlutoNotAPlanet()
         {
-            
+
             Assert.IsFalse(ext.Planets.ContainsKey("Pluto"));
         }
-        
+
         [Test]
-        public void LettersInName()
+        public void LettersInNameTest()
         {
-            foreach(KeyValuePair<string,int> item in ext.LettersInName())
+            if (ext.LettersInName().Count == 0)
+            {
+                Assert.Fail();
+            }
+            foreach (KeyValuePair<string, int> item in ext.LettersInName())
             {
                 Assert.IsTrue(item.Key.Length == item.Value);
             }
         }
 
         [Test]
-        [TestCase("Mercury", 0)]
-        [TestCase("Venus", 1)]
-        [TestCase("Earth", 2)]
-        [TestCase("Mars", 3)]
-        [TestCase("Jupiter", 4)]
-        [TestCase("Saturn", 5)]
-        [TestCase("Uranus", 6)]
-        [TestCase("Neptune", 7)]
-        public void PlanetOrderTest(string planet,int orderfromsun)
+        [TestCase("Mercury", 7)]
+        [TestCase("Venus", 6)]
+        [TestCase("Earth", 5)]
+        [TestCase("Mars", 4)]
+        [TestCase("Jupiter", 3)]
+        [TestCase("Saturn", 2)]
+        [TestCase("Uranus", 1)]
+        [TestCase("Neptune", 0)]
+        public void PlanetOrderTest(string planet, int orderfromsun)
         {
 
-            Assert.IsTrue(ext.OrderedPlanets().ToArray()[orderfromsun].Key==planet);
+            Assert.IsTrue(ext.OrderedPlanetsByDescending().ToArray()[orderfromsun].Key == planet);
         }
+
 
         [Test]
         public void FurthestFromTheSunTest()
         {
-            Assert.IsTrue(ext.FurthestFromTheSun().Key == "Neptune");
+            Assert.AreEqual(ext.FurthestFromTheSun().ToLower(), "neptune");
+        }
+        [Test]
+        public void ClosestToTheSunTest()
+        {
+            Assert.AreEqual(ext.ClosestToTheSun().ToLower(), "mercury");
         }
 
     }

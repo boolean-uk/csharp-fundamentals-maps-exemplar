@@ -4,61 +4,59 @@ using NUnit.Framework;
 
 namespace csharp_fundamentals_maps.Test
 {
-    public class CoreTest
+    [TestFixture]
+    class CoreTests
     {
         Core exercise;
 
-        public CoreTest()
+        public CoreTests()
         {
             this.exercise = new Core();
         }
 
         [Test]
-        [TestCase("Nathan", "firstName")]
-        [TestCase("King", "lastName")]
-        [TestCase("Software Developer", "occupation")]
-        public void shouldReturnMappedValues(string expected, string key)
+        public void getValueTest()
         {
-            Assert.AreEqual(expected, this.exercise.createPerson()[key]);
+            Assert.AreEqual("Nigel", this.exercise.getValue("firstName"));
+            Assert.AreEqual("Sibbert", this.exercise.getValue("lastName"));
+            Assert.AreEqual("Software Developer", this.exercise.getValue("occupation"));
+        }
+        [Test]
+        public void hasKeyTest()
+        {
+            Dictionary<string, string> map = new Dictionary<string, string>();
+
+            map.Add("firstName", "Nigel");
+            map.Add("lastName", "Sibbert");
+            map.Add("currentTown", "Bournemouth");
+
+            Assert.IsTrue(this.exercise.hasKey(map, "firstName"));
+            Assert.IsTrue(this.exercise.hasKey(map, "lastName"));
+            Assert.IsTrue(this.exercise.hasKey(map, "currentTown"));
+            Assert.IsFalse(this.exercise.hasKey(map, "dateOfBirth"));
+        }
+        [TestCase("Pepsi", 3)]
+        [TestCase("Sprite", 5)]
+        [TestCase("7up", 7)]
+        public void getValueOrDefaultTest(string drink, int quantityInFridge)
+        {
+            Dictionary<string, int> map = new Dictionary<string, int>();
+
+            map.Add("Pepsi", 3);
+            map.Add("Sprite", 5);
+            map.Add("7up", 7);
+
+            Assert.IsTrue(this.exercise.getValueOrDefault(map, drink) == quantityInFridge);
         }
 
         [Test]
-        [TestCase(new string[] { "universe", "bass", "muse" }, new int[] { 42, 6712, 7 })]
-        [TestCase(new string[] { "chicken", "nice", "chicken", "soup" }, new int[] { 23, 19, 96, 23, 165 })]
-        [TestCase(new string[] { }, new int[] { 918, 71, 88})]
-        public void shouldhavecreatedalistofstrings(string[] phrase, int[] array)
+        public void buildSecretPhraseTest()
         {
-            Assert.AreEqual(phrase,this.exercise.buildSecretPhrase(array));
-        }
-        [Test]
-        [TestCase("Earth",true)]
-        [TestCase("Venus", false)]
-        [TestCase("Jupiter", true)]
-        [TestCase("Mercury", true)]        
-        public void doeskeyexistinarray(string planet,bool expectedresult)
-        {
-            Dictionary<string,string> planets = new Dictionary<string,string>();
-            planets.Add("Earth", "Its a nice planet which is great to live on");
-            planets.Add("Jupiter", "A large planet which isn't too great to live on");
-            planets.Add("Mercury", "A warm planet which isn't too great to live on");
-
-
-            Assert.AreEqual(expectedresult, this.exercise.hasKey(planets, planet));
-
+            int[] numbers1 = new int[] { 23, 6712 };
+            Assert.AreEqual(this.exercise.buildSecretPhrase(numbers1), new List<string> { "chicken", "bass" });
+            int[] numbers2 = new int[] { 6712, 7, 23 };
+            Assert.AreEqual(this.exercise.buildSecretPhrase(numbers2), new List<string> { "bass", "muse", "chicken" });
         }
 
-        [Test]
-        [TestCase(true,"RobinReliant",3)]
-        [TestCase(true, "Bicycle", 2)]
-        [TestCase(true, "Train", -1)]
-        public void test(bool expectedresult,string vehicle,int wheelcount)
-        {
-            Dictionary<string,int> dictionary = new Dictionary<string,int>();
-            dictionary.Add("Quad", 4);
-            dictionary.Add("Bicycle", 2);
-            dictionary.Add("RobinReliant", 3);
-
-            Assert.AreEqual(expectedresult, this.exercise.getValueOrDefault(dictionary, vehicle)==wheelcount);
-        }
     }
 }
